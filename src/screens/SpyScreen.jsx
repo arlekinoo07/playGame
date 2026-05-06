@@ -11,6 +11,7 @@ import button from "../assets/photo/PageSpy/button.png";
 export default function SpyScreen({ onBack }) {
   const [step, setStep] = useState(0);
   const showSettingsPreview = step >= 1;
+  const showNamesPreview = step >= 2;
 
   return (
     <div
@@ -21,11 +22,11 @@ export default function SpyScreen({ onBack }) {
       <img src={spy2.src} className="absolute right-0 bottom-0 z-10" alt="spy" />
       <div className="absolute inset-0 bg-black/60" />
 
-      <div className="relative z-20 flex h-[600px] items-center justify-center gap-10 overflow-hidden">
+      <div className="relative z-20 flex h-[600px] w-[1080px] max-w-[calc(100vw-48px)] items-center justify-center gap-10 overflow-visible px-6">
         <div
           className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[144px] rounded-[10px] bg-[#222222] text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
             showSettingsPreview
-              ? "-translate-x-14 scale-[0.985] opacity-95"
+              ? "-translate-x-8 scale-[0.985] opacity-95"
               : "translate-x-0 scale-100 opacity-100"
           }`}
         >
@@ -70,7 +71,9 @@ export default function SpyScreen({ onBack }) {
           <div
             className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
               showSettingsPreview
-                ? "translate-x-0 scale-100 opacity-100"
+                ? showNamesPreview
+                  ? "-translate-x-6 scale-[0.99] opacity-100"
+                  : "translate-x-0 scale-100 opacity-100"
                 : "translate-x-32 scale-[0.94] opacity-0"
             }`}
           >
@@ -101,7 +104,13 @@ export default function SpyScreen({ onBack }) {
         )}
 
         {step === 2 && (
-          <div className="flex h-[558px] w-[471px] animate-[fadeIn_.5s_forwards] flex-col items-center justify-center gap-5 rounded-xl bg-[#222222] text-white">
+          <div
+            className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-5 rounded-xl bg-[#222222] text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              showNamesPreview
+                ? "translate-x-0 scale-100 opacity-100"
+                : "translate-x-32 scale-[0.94] opacity-0"
+            }`}
+          >
               <p className="text-2xl font-bold">Имена игроков</p>
 
               <div className="flex flex-col items-center justify-center gap-3">
