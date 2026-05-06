@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { THEMES } from '../data/themes.js';
 

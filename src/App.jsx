@@ -1,5 +1,6 @@
+"use client";
+
 import { useEffect } from "react";
-import "./App.css";
 
 import { useGame } from "./context/GameContext";
 import { generateRoles, getRandomTheme } from "./game/gameLogic";

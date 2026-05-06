@@ -1,14 +1,14 @@
 # Spy Game
 
-Прототип браузерной игры "Spy" на React + Vite.
+Прототип браузерной игры "Spy" на React + Next.js.
 
 ## Команды
 
 - `npm install`
 - `npm run dev`
 - `npm run build`
-- `npm run preview`
+- `npm run start`
 
 ## Deploy
 
-Проект готов к деплою на Vercel как обычное Vite-приложение.
+Проект готов к деплою на Vercel как Next.js-приложение.
