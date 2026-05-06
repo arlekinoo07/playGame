@@ -39,6 +39,7 @@ export default function SpyScreen({ onBack }) {
   const showSettingsPreview = step >= 1;
   const showNamesPreview = step >= 2;
   const showGameCards = step === 3;
+  const showModeCard = step < 2;
 
   const playerOptions = useMemo(
     () => Array.from({ length: 12 }, (_, index) => index + 4),
@@ -97,54 +98,56 @@ export default function SpyScreen({ onBack }) {
 
       {!showGameCards && (
         <div className="relative z-20 flex h-[600px] w-[1080px] max-w-[calc(100vw-48px)] items-center justify-center gap-10 overflow-visible px-6">
-          <div
-            className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[144px] rounded-[10px] bg-[#222222] text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              showSettingsPreview
-                ? "-translate-x-8 scale-[0.985] opacity-95"
-                : "translate-x-0 scale-100 opacity-100"
-            }`}
-          >
-            <div className="flex flex-col items-center justify-center gap-[30px]">
-              <p className="text-2xl font-bold">Шпион</p>
-              <div className="flex flex-col gap-[10px]">
-                <div className="group relative h-[50px] w-[362px]">
-                  <div className="absolute inset-0 cursor-pointer rounded-[10px] border-2 border-[#9A0D1B] bg-[#1E1E1E]" />
-                  <div
-                    className={`absolute inset-0 cursor-pointer rounded-[10px] bg-cover bg-center transition-opacity duration-300 ${
-                      showSettingsPreview ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                    }`}
-                    style={{ backgroundImage: `url(${button.src})` }}
-                  />
-                  <button
-                    onClick={() => setStep(1)}
-                    className="relative h-full w-full cursor-pointer text-lg font-bold text-white"
-                  >
-                    Однопользовательская
+          {showModeCard && (
+            <div
+              className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[144px] rounded-[10px] bg-[#222222] text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                showSettingsPreview
+                  ? "-translate-x-8 scale-[0.985] opacity-95"
+                  : "translate-x-0 scale-100 opacity-100"
+              }`}
+            >
+              <div className="flex flex-col items-center justify-center gap-[30px]">
+                <p className="text-2xl font-bold">Шпион</p>
+                <div className="flex flex-col gap-[10px]">
+                  <div className="group relative h-[50px] w-[362px]">
+                    <div className="absolute inset-0 cursor-pointer rounded-[10px] border-2 border-[#9A0D1B] bg-[#1E1E1E]" />
+                    <div
+                      className={`absolute inset-0 cursor-pointer rounded-[10px] bg-cover bg-center transition-opacity duration-300 ${
+                        showSettingsPreview ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                      }`}
+                      style={{ backgroundImage: `url(${button.src})` }}
+                    />
+                    <button
+                      onClick={() => setStep(1)}
+                      className="relative h-full w-full cursor-pointer text-lg font-bold text-white"
+                    >
+                      Однопользовательская
+                    </button>
+                  </div>
+                  <button className="h-[50px] w-[362px] cursor-no-drop rounded-[10px] border border-black bg-[#1E1E1E] text-lg">
+                    Многопользовательская(скоро)
+                  </button>
+                  <button className="h-[50px] w-[362px] cursor-no-drop rounded-[10px] border border-black bg-[#1E1E1E] text-lg">
+                    Настройки(скоро)
                   </button>
                 </div>
-                <button className="h-[50px] w-[362px] cursor-no-drop rounded-[10px] border border-black bg-[#1E1E1E] text-lg">
-                  Многопользовательская(скоро)
-                </button>
-                <button className="h-[50px] w-[362px] cursor-no-drop rounded-[10px] border border-black bg-[#1E1E1E] text-lg">
-                  Настройки(скоро)
-                </button>
               </div>
-            </div>
 
-            <button
-              onClick={onBack}
-              className="flex h-[50px] w-[362px] cursor-pointer items-center justify-center gap-1 rounded-[10px] border border-white text-lg transition duration-300 hover:border-black hover:bg-white hover:text-black"
-            >
-              Назад <Undo2 />
-            </button>
-          </div>
+              <button
+                onClick={onBack}
+                className="flex h-[50px] w-[362px] cursor-pointer items-center justify-center gap-1 rounded-[10px] border border-white text-lg transition duration-300 hover:border-black hover:bg-white hover:text-black"
+              >
+                Назад <Undo2 />
+              </button>
+            </div>
+          )}
 
           {(step === 1 || step === 2) && (
             <div
               className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 showSettingsPreview
                   ? showNamesPreview
-                    ? "-translate-x-6 scale-[0.99] opacity-100"
+                    ? "translate-x-0 scale-100 opacity-100"
                     : "translate-x-0 scale-100 opacity-100"
                   : "translate-x-32 scale-[0.94] opacity-0"
               }`}
