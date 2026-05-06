@@ -23,8 +23,10 @@ export default function SpyScreen({ onBack }) {
 
       <div className="relative z-20 flex h-[600px] items-center justify-center gap-10 overflow-hidden">
         <div
-          className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[144px] rounded-[10px] bg-[#222222] text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            showSettingsPreview ? "-translate-x-6" : "translate-x-0"
+          className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[144px] rounded-[10px] bg-[#222222] text-white transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            showSettingsPreview
+              ? "-translate-x-10 scale-[0.985] opacity-95"
+              : "translate-x-0 scale-100 opacity-100"
           }`}
         >
             <div className="flex flex-col items-center justify-center gap-[30px]">
@@ -64,10 +66,10 @@ export default function SpyScreen({ onBack }) {
 
         {(step === 1 || step === 2) && (
           <div
-            className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] text-white transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               showSettingsPreview
-                ? "translate-x-0 opacity-100"
-                : "translate-x-12 opacity-0"
+                ? "translate-x-0 scale-100 opacity-100"
+                : "translate-x-20 scale-[0.96] opacity-0"
             }`}
           >
             <div className="flex flex-col items-center justify-center gap-10">
