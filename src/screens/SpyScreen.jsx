@@ -144,12 +144,12 @@ export default function SpyScreen({ onBack }) {
 
           {(step === 1 || step === 2) && (
             <div
-              className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] text-white transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 showSettingsPreview
                   ? showNamesPreview
-                    ? "translate-x-0 scale-100 opacity-100"
+                    ? "-translate-x-6 scale-[0.99] opacity-100"
                     : "translate-x-0 scale-100 opacity-100"
-                  : "translate-x-32 scale-[0.94] opacity-0"
+                  : "translate-x-40 scale-[0.94] opacity-0"
               }`}
             >
               <div className="flex flex-col items-center justify-center gap-10">
@@ -221,10 +221,10 @@ export default function SpyScreen({ onBack }) {
 
           {step === 2 && (
             <div
-              className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-5 rounded-xl bg-[#222222] text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-5 rounded-xl bg-[#222222] text-white transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 showNamesPreview
                   ? "translate-x-0 scale-100 opacity-100"
-                  : "translate-x-32 scale-[0.94] opacity-0"
+                  : "translate-x-52 scale-[0.9] opacity-0"
               }`}
             >
               <p className="text-2xl font-bold">Старт игры</p>
