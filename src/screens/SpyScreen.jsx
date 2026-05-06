@@ -23,9 +23,9 @@ export default function SpyScreen({ onBack }) {
 
       <div className="relative z-20 flex h-[600px] items-center justify-center gap-10 overflow-hidden">
         <div
-          className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[144px] rounded-[10px] bg-[#222222] text-white transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[144px] rounded-[10px] bg-[#222222] text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
             showSettingsPreview
-              ? "-translate-x-10 scale-[0.985] opacity-95"
+              ? "-translate-x-14 scale-[0.985] opacity-95"
               : "translate-x-0 scale-100 opacity-100"
           }`}
         >
@@ -37,7 +37,9 @@ export default function SpyScreen({ onBack }) {
                 >
                   <div className="absolute inset-0 cursor-pointer rounded-[10px] border-2 border-[#9A0D1B] bg-[#1E1E1E]" />
                   <div
-                    className="absolute inset-0 cursor-pointer rounded-[10px] bg-cover bg-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    className={`absolute inset-0 cursor-pointer rounded-[10px] bg-cover bg-center transition-opacity duration-300 ${
+                      showSettingsPreview ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                    }`}
                     style={{ backgroundImage: `url(${button.src})` }}
                   />
                   <button
@@ -66,10 +68,10 @@ export default function SpyScreen({ onBack }) {
 
         {(step === 1 || step === 2) && (
           <div
-            className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] text-white transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
               showSettingsPreview
                 ? "translate-x-0 scale-100 opacity-100"
-                : "translate-x-20 scale-[0.96] opacity-0"
+                : "translate-x-32 scale-[0.94] opacity-0"
             }`}
           >
             <div className="flex flex-col items-center justify-center gap-10">
