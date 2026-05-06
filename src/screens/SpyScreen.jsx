@@ -29,7 +29,7 @@ function shuffle(items) {
 export default function SpyScreen({ onBack }) {
   const [step, setStep] = useState(0);
   const [category, setCategory] = useState("countries");
-  const [playersCount, setPlayersCount] = useState(5);
+  const [playersCount, setPlayersCount] = useState(4);
   const [spiesCount, setSpiesCount] = useState(1);
   const [cards, setCards] = useState([]);
   const [currentPlayer, setCurrentPlayer] = useState(0);
@@ -40,11 +40,21 @@ export default function SpyScreen({ onBack }) {
   const showNamesPreview = step >= 2;
   const showGameCards = step === 3;
 
-  const playerOptions = useMemo(() => [3, 4, 5, 6, 7, 8], []);
-  const spyOptions = useMemo(
-    () => Array.from({ length: Math.max(playersCount - 1, 1) }, (_, index) => index + 1),
-    [playersCount]
+  const playerOptions = useMemo(
+    () => Array.from({ length: 12 }, (_, index) => index + 4),
+    []
   );
+  const spyOptions = useMemo(() => {
+    if (playersCount <= 6) {
+      return [1];
+    }
+
+    if (playersCount <= 10) {
+      return [1, 2];
+    }
+
+    return [1, 2, 3];
+  }, [playersCount]);
 
   function startGame() {
     const topics = CATEGORIES[category].topics;
@@ -159,7 +169,14 @@ export default function SpyScreen({ onBack }) {
                     onChange={(event) => {
                       const nextPlayers = Number(event.target.value);
                       setPlayersCount(nextPlayers);
-                      setSpiesCount((current) => Math.min(current, nextPlayers - 1));
+                      setSpiesCount((current) => {
+                        const allowedSpies =
+                          nextPlayers <= 6 ? [1] : nextPlayers <= 10 ? [1, 2] : [1, 2, 3];
+
+                        return allowedSpies.includes(current)
+                          ? current
+                          : allowedSpies[allowedSpies.length - 1];
+                      });
                     }}
                   >
                     {playerOptions.map((value) => (
