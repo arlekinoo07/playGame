@@ -280,8 +280,8 @@ export default function SpyScreen({ onBack }) {
                   : {
                       backgroundImage: `url(${button.src})`,
                       backgroundPosition: "center",
-                      backgroundRepeat: "repeat-y",
-                      backgroundSize: "100% 72px",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
                     }
               }
             >
