@@ -269,12 +269,21 @@ export default function SpyScreen({ onBack }) {
 
                 setCardOpened(true);
               }}
-              className={`flex h-[440px] w-[290px] cursor-pointer items-center justify-center rounded-[16px] border-2 bg-cover bg-center px-8 text-center text-3xl font-bold shadow-2xl transition-all duration-500 ${
+              className={`flex h-[440px] w-[290px] cursor-pointer items-center justify-center rounded-[16px] border-2 px-8 text-center text-3xl font-bold shadow-2xl transition-all duration-500 ${
                 cardOpened
                   ? "border-[#9A0D1B] bg-white text-black"
                   : "border-[#3A3A3A] text-white hover:border-[#4A4A4A]"
               }`}
-              style={cardOpened ? undefined : { backgroundImage: `url(${button.src})` }}
+              style={
+                cardOpened
+                  ? undefined
+                  : {
+                      backgroundImage: `url(${button.src})`,
+                      backgroundPosition: "center",
+                      backgroundRepeat: "repeat-y",
+                      backgroundSize: "100% 72px",
+                    }
+              }
             >
               {cardOpened ? cards[currentPlayer].text : "Открыть карточку"}
             </button>
