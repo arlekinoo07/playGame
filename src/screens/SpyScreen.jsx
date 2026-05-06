@@ -253,13 +253,13 @@ export default function SpyScreen({ onBack }) {
       )}
 
       {showGameCards && cards.length > 0 && (
-        <div className="relative z-20 flex h-[600px] w-full items-center justify-center px-6">
-          <div className="flex h-[558px] w-[471px] flex-col items-center justify-center gap-8 rounded-[10px] bg-[#222222] px-10 text-white">
-            <p className="text-center text-2xl font-bold">Игрок {currentPlayer + 1}</p>
-            <p className="text-center text-lg text-white/75">
-              {cardOpened ? "Нажми ещё раз, чтобы передать ход дальше" : "Передайте устройство следующему игроку"}
-            </p>
+        <div className="relative z-20 flex h-screen w-full flex-col items-center justify-center px-6 text-white">
+          <p className="mb-3 text-center text-2xl font-bold">Игрок {currentPlayer + 1}</p>
+          <p className="mb-8 text-center text-lg text-white/75">
+            {cardOpened ? "Нажми ещё раз, чтобы передать ход дальше" : "Передайте устройство следующему игроку"}
+          </p>
 
+          <div className="flex items-center justify-center">
             <button
               onClick={() => {
                 if (cardOpened) {
@@ -269,7 +269,7 @@ export default function SpyScreen({ onBack }) {
 
                 setCardOpened(true);
               }}
-              className={`flex h-[320px] w-[320px] items-center justify-center rounded-[20px] border-2 text-center text-3xl font-bold transition-all duration-500 ${
+              className={`flex h-[440px] w-[290px] items-center justify-center rounded-[24px] border-2 px-8 text-center text-3xl font-bold shadow-2xl transition-all duration-500 ${
                 cardOpened
                   ? "border-[#9A0D1B] bg-white text-black"
                   : "border-white bg-[#1E1E1E] text-white hover:border-black hover:bg-white hover:text-black"
@@ -277,12 +277,12 @@ export default function SpyScreen({ onBack }) {
             >
               {cardOpened ? cards[currentPlayer].text : "Открыть карточку"}
             </button>
-
-            <p className="text-center text-sm text-white/60">
-              Тестовая категория: {CATEGORIES[category].name}
-              {selectedTopic ? ` • Тема выбрана` : ""}
-            </p>
           </div>
+
+          <p className="absolute bottom-8 text-center text-sm text-white/60">
+            Тестовая категория: {CATEGORIES[category].name}
+            {selectedTopic ? ` • Тема выбрана` : ""}
+          </p>
         </div>
       )}
     </div>
