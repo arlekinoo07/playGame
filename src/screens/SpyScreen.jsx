@@ -10,6 +10,7 @@ import button from "../assets/photo/PageSpy/button.png";
 
 export default function SpyScreen({ onBack }) {
   const [step, setStep] = useState(0);
+  const showSettingsPreview = step >= 1;
 
   return (
     <div
@@ -20,9 +21,12 @@ export default function SpyScreen({ onBack }) {
       <img src={spy2.src} className="absolute right-0 bottom-0 z-10" alt="spy" />
       <div className="absolute inset-0 bg-black/60" />
 
-      <div className="relative z-20 flex h-[600px] items-center justify-center gap-10">
-        {step === 0 && (
-          <div className="flex h-[558px] w-[471px] animate-[fadeIn_.5s_forwards] flex-col items-center justify-center gap-[144px] rounded-[10px] bg-[#222222] text-white">
+      <div className="relative z-20 flex h-[600px] items-center justify-center gap-10 overflow-hidden">
+        <div
+          className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[144px] rounded-[10px] bg-[#222222] text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            showSettingsPreview ? "-translate-x-6" : "translate-x-0"
+          }`}
+        >
             <div className="flex flex-col items-center justify-center gap-[30px]">
               <p className="text-2xl font-bold">Шпион</p>
               <div className="flex flex-col gap-[10px]">
@@ -57,10 +61,15 @@ export default function SpyScreen({ onBack }) {
               Назад <Undo2 />
             </button>
           </div>
-        )}
 
-        {step === 1 && (
-          <div className="flex h-[558px] w-[471px] animate-[fadeIn_.5s_forwards] flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] text-white">
+        {(step === 1 || step === 2) && (
+          <div
+            className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              showSettingsPreview
+                ? "translate-x-0 opacity-100"
+                : "translate-x-12 opacity-0"
+            }`}
+          >
             <div className="flex flex-col items-center justify-center gap-10">
               <p className="text-2xl font-bold">Настройки игры</p>
               <div className="flex flex-col gap-3">
@@ -88,28 +97,7 @@ export default function SpyScreen({ onBack }) {
         )}
 
         {step === 2 && (
-          <>
-            <div className="flex h-[558px] w-[471px] animate-[fadeIn_.5s_forwards] flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] text-white">
-              <div className="flex flex-col items-center justify-center gap-10">
-                <p className="text-2xl font-bold">Настройки игры</p>
-                <div className="flex flex-col gap-3">
-                  <SettingsButton label="Категория" />
-                  <SettingsButton label="Кол-во игроков" />
-                  <SettingsButton label="Кол-во шпионов" />
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center gap-[10px]">
-                <button
-                  onClick={() => setStep(1)}
-                  className="flex h-[42px] w-[328px] cursor-pointer items-center justify-center gap-1 rounded-[10px] border border-white bg-[#1E1E1E] text-base transition duration-300 hover:border-black hover:bg-white hover:text-black"
-                >
-                  Назад <Undo2 />
-                </button>
-              </div>
-            </div>
-
-            <div className="flex h-[558px] w-[471px] animate-[fadeIn_.5s_forwards] flex-col items-center justify-center gap-5 rounded-xl bg-[#222222] text-white">
+          <div className="flex h-[558px] w-[471px] animate-[fadeIn_.5s_forwards] flex-col items-center justify-center gap-5 rounded-xl bg-[#222222] text-white">
               <p className="text-2xl font-bold">Имена игроков</p>
 
               <div className="flex flex-col items-center justify-center gap-3">
@@ -130,7 +118,6 @@ export default function SpyScreen({ onBack }) {
                 Начать игру
               </button>
             </div>
-          </>
         )}
       </div>
     </div>
