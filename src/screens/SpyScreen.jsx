@@ -27,8 +27,8 @@ function shuffle(items) {
   return copy;
 }
 
-const CARD_PATTERN = Array.from({ length: 56 }, (_, index) => {
-  const columns = 7;
+const CARD_PATTERN = Array.from({ length: 72 }, (_, index) => {
+  const columns = 8;
   const column = index % columns;
   const row = Math.floor(index / columns);
 
