@@ -34,8 +34,8 @@ const CARD_PATTERN = Array.from({ length: 126 }, (_, index) => {
 
   return {
     id: index,
-    left: -10 + column * 13,
-    top: -8 + row * 8,
+    left: -12 + column * 15,
+    top: -10 + row * 9.5,
   };
 });
 
