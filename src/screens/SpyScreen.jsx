@@ -6,6 +6,7 @@ import { ArrowBigRight, ChevronDown, Undo2 } from "lucide-react";
 import spy1 from "../assets/photo/PageSpy/spy1.png";
 import spy2 from "../assets/photo/PageSpy/spy2.png";
 import back from "../assets/photo/PageSpy/back.png";
+import button from "../assets/photo/PageSpy/button.png";
 import cardVector from "../assets/photo/card-vector.png";
 
 const CATEGORIES = {
