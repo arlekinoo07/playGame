@@ -7,6 +7,7 @@ import spy1 from "../assets/photo/PageSpy/spy1.png";
 import spy2 from "../assets/photo/PageSpy/spy2.png";
 import back from "../assets/photo/PageSpy/back.png";
 import button from "../assets/photo/PageSpy/button.png";
+import cardVector from "../assets/photo/card-vector.png";
 
 const CATEGORIES = {
   countries: {
@@ -269,23 +270,39 @@ export default function SpyScreen({ onBack }) {
 
                 setCardOpened(true);
               }}
-              className={`flex h-[440px] w-[290px] cursor-pointer items-center justify-center rounded-[16px] border-2 px-8 text-center text-3xl font-bold shadow-2xl transition-all duration-500 ${
+              className={`relative flex h-[440px] w-[290px] cursor-pointer items-center justify-center overflow-hidden rounded-[16px] border-2 px-8 text-center text-3xl font-bold shadow-2xl transition-all duration-500 ${
                 cardOpened
                   ? "border-[#9A0D1B] bg-white text-black"
                   : "border-[#3A3A3A] text-white hover:border-[#4A4A4A]"
               }`}
-              style={
-                cardOpened
-                  ? undefined
-                  : {
+              style={cardOpened ? undefined : { backgroundColor: "#1E1E1E" }}
+            >
+              {!cardOpened && (
+                <>
+                  <span
+                    className="absolute inset-0"
+                    style={{
                       backgroundImage: `url(${button.src})`,
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
-                    }
-              }
-            >
+                    }}
+                  />
+                  <span
+                    className="absolute -inset-24 opacity-90"
+                    style={{
+                      backgroundImage: `url(${cardVector.src})`,
+                      backgroundRepeat: "repeat",
+                      backgroundSize: "58px 54px",
+                      transform: "rotate(-45deg)",
+                      transformOrigin: "center",
+                    }}
+                  />
+                </>
+              )}
+              <span className="relative z-10">
               {cardOpened ? cards[currentPlayer].text : "Открыть карточку"}
+              </span>
             </button>
           </div>
 
