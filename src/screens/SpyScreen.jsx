@@ -283,7 +283,7 @@ export default function SpyScreen({ onBack }) {
                   style={{
                     backgroundImage: `url(${cardVector.src})`,
                     backgroundRepeat: "repeat",
-                    backgroundSize: "78px 74px",
+                    backgroundSize: "96px 92px",
                     transform: "rotate(-45deg)",
                     transformOrigin: "center",
                   }}
