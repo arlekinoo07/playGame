@@ -6,7 +6,6 @@ import { ArrowBigRight, ChevronDown, Undo2 } from "lucide-react";
 import spy1 from "../assets/photo/PageSpy/spy1.png";
 import spy2 from "../assets/photo/PageSpy/spy2.png";
 import back from "../assets/photo/PageSpy/back.png";
-import button from "../assets/photo/PageSpy/button.png";
 import cardVector from "../assets/photo/card-vector.png";
 
 const CATEGORIES = {
@@ -278,27 +277,16 @@ export default function SpyScreen({ onBack }) {
               style={cardOpened ? undefined : { backgroundColor: "#1E1E1E" }}
             >
               {!cardOpened && (
-                <>
-                  <span
-                    className="absolute inset-0"
-                    style={{
-                      backgroundImage: `url(${button.src})`,
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "cover",
-                    }}
-                  />
-                  <span
-                    className="absolute -inset-24 opacity-90"
-                    style={{
-                      backgroundImage: `url(${cardVector.src})`,
-                      backgroundRepeat: "repeat",
-                      backgroundSize: "58px 54px",
-                      transform: "rotate(-45deg)",
-                      transformOrigin: "center",
-                    }}
-                  />
-                </>
+                <span
+                  className="absolute -inset-24 opacity-90"
+                  style={{
+                    backgroundImage: `url(${cardVector.src})`,
+                    backgroundRepeat: "repeat",
+                    backgroundSize: "78px 74px",
+                    transform: "rotate(-45deg)",
+                    transformOrigin: "center",
+                  }}
+                />
               )}
               <span className="relative z-10">
               {cardOpened ? cards[currentPlayer].text : "Открыть карточку"}
