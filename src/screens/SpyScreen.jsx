@@ -27,6 +27,18 @@ function shuffle(items) {
   return copy;
 }
 
+const CARD_PATTERN = Array.from({ length: 30 }, (_, index) => {
+  const columns = 5;
+  const column = index % columns;
+  const row = Math.floor(index / columns);
+
+  return {
+    id: index,
+    left: 20 + column * 22,
+    top: 6 + row * 14,
+  };
+});
+
 export default function SpyScreen({ onBack }) {
   const [step, setStep] = useState(0);
   const [category, setCategory] = useState("countries");
@@ -278,16 +290,23 @@ export default function SpyScreen({ onBack }) {
               style={cardOpened ? undefined : { backgroundColor: "#1E1E1E" }}
             >
               {!cardOpened && (
-                <span
-                  className="absolute -inset-24 opacity-90"
-                  style={{
-                    backgroundImage: `url(${cardVector.src})`,
-                    backgroundRepeat: "repeat",
-                    backgroundSize: "96px 92px",
-                    transform: "rotate(-45deg)",
-                    transformOrigin: "center",
-                  }}
-                />
+                <div className="absolute inset-0 overflow-hidden rounded-[14px]">
+                  {CARD_PATTERN.map((item) => (
+                    <img
+                      key={item.id}
+                      src={cardVector.src}
+                      alt=""
+                      className="absolute opacity-90"
+                      style={{
+                        left: `${item.left}%`,
+                        top: `${item.top}%`,
+                        width: "30px",
+                        height: "30px",
+                        transform: "rotate(-45deg)",
+                      }}
+                    />
+                  ))}
+                </div>
               )}
               <span className="relative z-10">
               {cardOpened ? cards[currentPlayer].text : "Открыть карточку"}
