@@ -27,15 +27,15 @@ function shuffle(items) {
   return copy;
 }
 
-const CARD_PATTERN = Array.from({ length: 30 }, (_, index) => {
-  const columns = 5;
+const CARD_PATTERN = Array.from({ length: 56 }, (_, index) => {
+  const columns = 7;
   const column = index % columns;
   const row = Math.floor(index / columns);
 
   return {
     id: index,
-    left: 20 + column * 22,
-    top: 6 + row * 14,
+    left: -8 + column * 16,
+    top: -6 + row * 10,
   };
 });
 
