@@ -312,7 +312,7 @@ export default function SpyScreen({ onBack }) {
                 {cardOpened ? (
                   cards[currentPlayer].text
                 ) : (
-                  <span className="flex min-h-[148px] w-[190px] items-center justify-center rounded-[18px] border border-white/10 bg-black/25 px-6 text-center text-[44px] leading-[0.95] backdrop-blur-md">
+                  <span className="flex min-h-[148px] w-[190px] items-center justify-center rounded-[18px] border border-white/10 bg-black/25 px-6 text-center text-[34px] leading-[0.95] backdrop-blur-md">
                     Открыть карточку
                   </span>
                 )}
