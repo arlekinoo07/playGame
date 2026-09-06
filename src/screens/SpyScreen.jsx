@@ -137,27 +137,27 @@ export default function SpyScreen({ onBack }) {
 
   return (
     <div
-      className="relative flex h-screen w-screen items-center justify-center gap-6 bg-black"
+      className="relative flex h-dvh min-h-[560px] w-screen items-center justify-center gap-6 overflow-hidden bg-black"
       style={{ backgroundImage: `url(${back.src})`, backgroundSize: "cover" }}
     >
-      <img src={spy1.src} className="absolute bottom-0 left-0 z-10" alt="spy" />
-      <img src={spy2.src} className="absolute right-0 bottom-0 z-10" alt="spy" />
+      <img src={spy1.src} className="absolute bottom-0 left-0 z-10 max-h-[42vh] max-w-[55vw] object-contain md:max-h-none md:max-w-none" alt="spy" />
+      <img src={spy2.src} className="absolute right-0 bottom-0 z-10 max-h-[42vh] max-w-[55vw] object-contain md:max-h-none md:max-w-none" alt="spy" />
       <div className="absolute inset-0 bg-black/60" />
 
       {!showGameCards && !showGameStarted && !showResults && (
-        <div className="relative z-20 flex h-[600px] w-[1080px] max-w-[calc(100vw-48px)] items-center justify-center gap-10 overflow-visible px-6">
+        <div className="relative z-20 flex h-full w-full items-center justify-center gap-10 px-4 py-5 md:h-[600px] md:w-[1080px] md:max-w-[calc(100vw-48px)] md:overflow-visible md:px-6 md:py-0">
           {showModeCard && (
             <div
-              className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[144px] rounded-[10px] bg-[#222222] text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              className={`h-auto min-h-[500px] w-full max-w-[471px] shrink-0 flex-col items-center justify-center gap-20 rounded-[10px] bg-[#222222] px-5 py-8 text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:flex md:h-[558px] md:gap-[144px] md:px-0 md:py-0 ${
                 showSettingsPreview
-                  ? "-translate-x-8 scale-[0.985] opacity-95"
-                  : "translate-x-0 scale-100 opacity-100"
+                  ? "hidden md:flex md:-translate-x-8 md:scale-[0.985] md:opacity-95"
+                  : "flex translate-x-0 scale-100 opacity-100"
               }`}
             >
               <div className="flex flex-col items-center justify-center gap-[30px]">
                 <p className="text-2xl font-bold">Шпион</p>
-                <div className="flex flex-col gap-[10px]">
-                  <div className="group relative h-[50px] w-[362px]">
+                <div className="flex w-full flex-col gap-[10px]">
+                  <div className="group relative h-[50px] w-full max-w-[362px]">
                     <div className="absolute inset-0 cursor-pointer rounded-[10px] border-2 border-[#9A0D1B] bg-[#1E1E1E]" />
                     <div
                       className={`absolute inset-0 cursor-pointer rounded-[10px] bg-cover bg-center transition-opacity duration-300 ${
@@ -172,10 +172,10 @@ export default function SpyScreen({ onBack }) {
                       Однопользовательская
                     </button>
                   </div>
-                  <button className="h-[50px] w-[362px] cursor-no-drop rounded-[10px] border border-black bg-[#1E1E1E] text-lg">
+                  <button className="h-[50px] w-full max-w-[362px] cursor-no-drop rounded-[10px] border border-black bg-[#1E1E1E] px-2 text-base sm:text-lg">
                     Многопользовательская(скоро)
                   </button>
-                  <button className="h-[50px] w-[362px] cursor-no-drop rounded-[10px] border border-black bg-[#1E1E1E] text-lg">
+                  <button className="h-[50px] w-full max-w-[362px] cursor-no-drop rounded-[10px] border border-black bg-[#1E1E1E] text-lg">
                     Настройки(скоро)
                   </button>
                 </div>
@@ -183,7 +183,7 @@ export default function SpyScreen({ onBack }) {
 
               <button
                 onClick={onBack}
-                className="flex h-[50px] w-[362px] cursor-pointer items-center justify-center gap-1 rounded-[10px] border border-white text-lg transition duration-300 hover:border-black hover:bg-white hover:text-black"
+                className="flex h-[50px] w-full max-w-[362px] cursor-pointer items-center justify-center gap-1 rounded-[10px] border border-white text-lg transition duration-300 hover:border-black hover:bg-white hover:text-black"
               >
                 Назад <Undo2 />
               </button>
@@ -192,17 +192,17 @@ export default function SpyScreen({ onBack }) {
 
           {(step === 1 || step === 2) && (
             <div
-              className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] text-white transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              className={`h-auto min-h-[500px] w-full max-w-[471px] shrink-0 flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] px-5 py-8 text-white transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:flex md:h-[558px] md:px-0 md:py-0 ${
                 showSettingsPreview
                   ? showNamesPreview
-                    ? "-translate-x-6 scale-[0.99] opacity-100"
-                    : "translate-x-0 scale-100 opacity-100"
+                    ? "hidden md:flex md:-translate-x-6 md:scale-[0.99] md:opacity-100"
+                    : "flex translate-x-0 scale-100 opacity-100"
                   : "translate-x-40 scale-[0.94] opacity-0"
               }`}
             >
-              <div className="flex flex-col items-center justify-center gap-10">
+              <div className="flex w-full flex-col items-center justify-center gap-8 md:gap-10">
                 <p className="text-2xl font-bold">Настройки игры</p>
-                <div className="flex flex-col gap-3">
+                <div className="flex w-full max-w-[328px] flex-col gap-3">
                   <SettingsSelect
                     label="Категория"
                     value={category}
@@ -250,16 +250,16 @@ export default function SpyScreen({ onBack }) {
                 </div>
               </div>
 
-              <div className="flex items-center justify-center gap-[10px]">
+              <div className="flex w-full max-w-[328px] items-center justify-center gap-[10px]">
                 <button
                   onClick={() => setStep(0)}
-                  className="flex h-[42px] w-[159px] cursor-pointer items-center justify-center gap-1 rounded-[10px] border border-white bg-[#1E1E1E] text-base transition duration-300 hover:border-black hover:bg-white hover:text-black"
+                  className="flex h-[42px] min-w-0 flex-1 cursor-pointer items-center justify-center gap-1 rounded-[10px] border border-white bg-[#1E1E1E] text-base transition duration-300 hover:border-black hover:bg-white hover:text-black"
                 >
                   Назад <Undo2 />
                 </button>
                 <button
                   onClick={() => setStep(2)}
-                  className="flex h-[42px] w-[159px] cursor-pointer items-center justify-center gap-1 rounded-[10px] border border-white bg-[#1E1E1E] text-base transition duration-300 hover:border-black hover:bg-white hover:text-black"
+                  className="flex h-[42px] min-w-0 flex-1 cursor-pointer items-center justify-center gap-1 rounded-[10px] border border-white bg-[#1E1E1E] text-base transition duration-300 hover:border-black hover:bg-white hover:text-black"
                 >
                   Далее <ArrowBigRight />
                 </button>
@@ -269,7 +269,7 @@ export default function SpyScreen({ onBack }) {
 
           {step === 2 && (
             <div
-              className={`flex h-[558px] w-[471px] shrink-0 flex-col items-center justify-center gap-5 rounded-xl bg-[#222222] text-white transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              className={`flex h-auto min-h-[500px] w-full max-w-[471px] shrink-0 flex-col items-center justify-center gap-5 rounded-xl bg-[#222222] px-5 py-8 text-white transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:h-[558px] md:px-0 md:py-0 ${
                 showNamesPreview
                   ? "translate-x-0 scale-100 opacity-100"
                   : "translate-x-52 scale-[0.9] opacity-0"
@@ -301,9 +301,9 @@ export default function SpyScreen({ onBack }) {
       )}
 
       {showGameCards && cards.length > 0 && (
-        <div className="relative z-20 flex h-screen w-full flex-col items-center justify-center px-6 text-white">
+        <div className="relative z-20 flex h-dvh w-full flex-col items-center justify-center px-4 py-5 text-white sm:px-6">
           <p className="mb-3 text-center text-2xl font-bold">Игрок {currentPlayer + 1}</p>
-          <p className="mb-8 text-center text-lg text-white/75">
+          <p className="mb-5 max-w-[330px] text-center text-base text-white/75 sm:mb-8 sm:text-lg">
             {cardOpened ? "Нажми ещё раз, чтобы передать ход дальше" : "Передайте устройство следующему игроку"}
           </p>
 
@@ -321,7 +321,7 @@ export default function SpyScreen({ onBack }) {
 
                 setCardOpened(true);
               }}
-              className="relative h-[440px] w-[290px] cursor-pointer border-0 bg-transparent p-0 text-center shadow-2xl outline-none"
+              className="relative h-[min(440px,58dvh)] w-[min(290px,76vw)] cursor-pointer border-0 bg-transparent p-0 text-center shadow-2xl outline-none"
               aria-label={cardOpened ? "Закрыть карточку и передать ход" : "Открыть карточку"}
             >
               <div
@@ -358,7 +358,7 @@ export default function SpyScreen({ onBack }) {
             </button>
           </div>
 
-          <p className="absolute bottom-8 text-center text-sm text-white/60">
+          <p className="absolute bottom-3 text-center text-xs text-white/60 sm:bottom-8 sm:text-sm">
             Тестовая категория: {CATEGORIES[category].name}
             {selectedTopic ? ` • Тема выбрана` : ""}
           </p>
@@ -366,16 +366,16 @@ export default function SpyScreen({ onBack }) {
       )}
 
       {showGameStarted && (
-        <div className="relative z-20 flex h-screen w-full items-center justify-center px-6 text-white">
-          <div className="flex h-[360px] w-[471px] max-w-full flex-col items-center justify-center gap-16 rounded-[16px] border border-white/10 bg-[#222222] px-8 text-center shadow-2xl">
+        <div className="relative z-20 flex h-dvh w-full items-center justify-center px-4 py-5 text-white sm:px-6">
+          <div className="flex min-h-[330px] w-[471px] max-w-full flex-col items-center justify-center gap-12 rounded-[16px] border border-white/10 bg-[#222222] px-5 py-8 text-center shadow-2xl sm:h-[360px] sm:gap-16 sm:px-8">
             <div className="flex flex-col items-center gap-4">
-              <p className="text-4xl font-bold">Игра началась</p>
+              <p className="text-3xl font-bold sm:text-4xl">Игра началась</p>
               <p className="text-lg text-white/70">Обсуждайте и найдите шпиона</p>
             </div>
 
             <button
               onClick={finishGame}
-              className="h-[50px] w-[256px] cursor-pointer rounded-[10px] border border-white bg-[#1E1E1E] text-lg font-bold transition duration-300 hover:border-black hover:bg-white hover:text-black"
+              className="h-[50px] w-full max-w-[256px] cursor-pointer rounded-[10px] border border-white bg-[#1E1E1E] text-lg font-bold transition duration-300 hover:border-black hover:bg-white hover:text-black"
             >
               Завершить игру
             </button>
@@ -384,10 +384,10 @@ export default function SpyScreen({ onBack }) {
       )}
 
       {showResults && (
-        <div className="relative z-20 flex h-screen w-full items-center justify-center px-6 text-white">
-          <div className="flex min-h-[420px] w-[471px] max-w-full flex-col items-center justify-center gap-12 rounded-[16px] border border-white/10 bg-[#222222] px-8 py-12 text-center shadow-2xl">
+        <div className="relative z-20 flex h-dvh w-full items-center justify-center px-4 py-5 text-white sm:px-6">
+          <div className="flex min-h-[400px] w-[471px] max-w-full flex-col items-center justify-center gap-10 rounded-[16px] border border-white/10 bg-[#222222] px-5 py-8 text-center shadow-2xl sm:min-h-[420px] sm:gap-12 sm:px-8 sm:py-12">
             <div className="flex flex-col items-center gap-6">
-              <p className="text-4xl font-bold">Шпион был</p>
+              <p className="text-3xl font-bold sm:text-4xl">Шпион был</p>
               <p className="text-3xl font-bold text-[#D9293A]">
                 {cards
                   .map((card, index) => (card.role === "spy" ? `Игрок ${index + 1}` : null))
@@ -399,7 +399,7 @@ export default function SpyScreen({ onBack }) {
               </p>
             </div>
 
-            <div className="flex w-[256px] flex-col gap-3">
+            <div className="flex w-full max-w-[256px] flex-col gap-3">
               <button
                 onClick={resetGame}
                 className="h-[50px] w-full cursor-pointer rounded-[10px] border border-white bg-[#1E1E1E] text-lg font-bold transition duration-300 hover:border-black hover:bg-white hover:text-black"
@@ -427,7 +427,7 @@ function SettingsSelect({ children, label, onChange, value }) {
       <select
         value={value}
         onChange={onChange}
-        className="h-[57px] w-[328px] cursor-pointer appearance-none rounded-[10px] border border-black bg-[#1E1E1E] px-5 pr-12 text-lg text-white outline-none transition duration-300 hover:bg-[#363636]"
+        className="h-[57px] w-full cursor-pointer appearance-none rounded-[10px] border border-black bg-[#1E1E1E] px-5 pr-12 text-lg text-white outline-none transition duration-300 hover:bg-[#363636]"
       >
         {children}
       </select>

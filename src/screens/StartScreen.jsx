@@ -40,7 +40,7 @@ export default function StartScreen({ onOpenSpy }) {
 
   return (
     <div
-      className="relative h-screen w-screen overflow-hidden"
+      className="relative h-dvh min-h-[560px] w-screen overflow-hidden"
       style={
         hover
           ? {
@@ -55,26 +55,26 @@ export default function StartScreen({ onOpenSpy }) {
 
       <img
         src={cloud1.src}
-        className={`absolute top-0 right-0 transition-opacity duration-500 ${hover ? "opacity-0" : "opacity-100"}`}
+        className={`absolute top-0 right-0 max-h-[48vh] max-w-[72vw] object-contain transition-opacity duration-500 md:max-h-none md:max-w-none ${hover ? "opacity-0" : "opacity-100"}`}
         alt="cloud"
       />
       <img
         src={spy2.src}
-        className={`absolute top-0 right-0 transition-opacity duration-500 ${hover ? "opacity-100" : "opacity-0"}`}
+        className={`absolute top-0 right-0 max-h-[48vh] max-w-[72vw] object-contain transition-opacity duration-500 md:max-h-none md:max-w-none ${hover ? "opacity-100" : "opacity-0"}`}
         alt="spy"
       />
       <img
         src={cloud2.src}
-        className={`absolute bottom-0 left-0 transition-opacity duration-500 ${hover ? "opacity-0" : "opacity-100"}`}
+        className={`absolute bottom-0 left-0 max-h-[48vh] max-w-[72vw] object-contain transition-opacity duration-500 md:max-h-none md:max-w-none ${hover ? "opacity-0" : "opacity-100"}`}
         alt="cloud"
       />
       <img
         src={spy1.src}
-        className={`absolute bottom-0 left-0 transition-opacity duration-500 ${hover ? "opacity-100" : "opacity-0"}`}
+        className={`absolute bottom-0 left-0 max-h-[48vh] max-w-[72vw] object-contain transition-opacity duration-500 md:max-h-none md:max-w-none ${hover ? "opacity-100" : "opacity-0"}`}
         alt="spy"
       />
 
-      <div className="relative z-20 flex h-full w-full flex-col items-center justify-center gap-[130px]">
+      <div className="relative z-20 flex h-full w-full flex-col items-center justify-center gap-16 px-4 py-10 md:gap-[130px] md:px-0 md:py-0">
         <div className="flex flex-col items-center justify-center gap-[30px]">
           <p className={`text-2xl ${hover ? "text-white" : "text-black"}`}>Игры</p>
 
