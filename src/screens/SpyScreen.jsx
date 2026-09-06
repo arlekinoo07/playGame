@@ -53,6 +53,8 @@ export default function SpyScreen({ onBack }) {
   const showSettingsPreview = step >= 1;
   const showNamesPreview = step >= 2;
   const showGameCards = step === 3;
+  const showGameStarted = step === 4;
+  const showResults = step === 5;
   const showModeCard = step < 2;
 
   const playerOptions = useMemo(
@@ -104,11 +106,33 @@ export default function SpyScreen({ onBack }) {
     setCardClosing(false);
 
     if (currentPlayer === cards.length - 1) {
-      setStep(1);
+      setStep(4);
       return;
     }
 
     setCurrentPlayer((value) => value + 1);
+  }
+
+  function finishGame() {
+    setStep(5);
+  }
+
+  function resetGame() {
+    setCards([]);
+    setCurrentPlayer(0);
+    setCardOpened(false);
+    setCardClosing(false);
+    setSelectedTopic("");
+    setStep(1);
+  }
+
+  function returnToMenu() {
+    setCards([]);
+    setCurrentPlayer(0);
+    setCardOpened(false);
+    setCardClosing(false);
+    setSelectedTopic("");
+    onBack();
   }
 
   return (
@@ -120,7 +144,7 @@ export default function SpyScreen({ onBack }) {
       <img src={spy2.src} className="absolute right-0 bottom-0 z-10" alt="spy" />
       <div className="absolute inset-0 bg-black/60" />
 
-      {!showGameCards && (
+      {!showGameCards && !showGameStarted && !showResults && (
         <div className="relative z-20 flex h-[600px] w-[1080px] max-w-[calc(100vw-48px)] items-center justify-center gap-10 overflow-visible px-6">
           {showModeCard && (
             <div
@@ -338,6 +362,58 @@ export default function SpyScreen({ onBack }) {
             Тестовая категория: {CATEGORIES[category].name}
             {selectedTopic ? ` • Тема выбрана` : ""}
           </p>
+        </div>
+      )}
+
+      {showGameStarted && (
+        <div className="relative z-20 flex h-screen w-full items-center justify-center px-6 text-white">
+          <div className="flex h-[360px] w-[471px] max-w-full flex-col items-center justify-center gap-16 rounded-[16px] border border-white/10 bg-[#222222] px-8 text-center shadow-2xl">
+            <div className="flex flex-col items-center gap-4">
+              <p className="text-4xl font-bold">Игра началась</p>
+              <p className="text-lg text-white/70">Обсуждайте и найдите шпиона</p>
+            </div>
+
+            <button
+              onClick={finishGame}
+              className="h-[50px] w-[256px] cursor-pointer rounded-[10px] border border-white bg-[#1E1E1E] text-lg font-bold transition duration-300 hover:border-black hover:bg-white hover:text-black"
+            >
+              Завершить игру
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showResults && (
+        <div className="relative z-20 flex h-screen w-full items-center justify-center px-6 text-white">
+          <div className="flex min-h-[420px] w-[471px] max-w-full flex-col items-center justify-center gap-12 rounded-[16px] border border-white/10 bg-[#222222] px-8 py-12 text-center shadow-2xl">
+            <div className="flex flex-col items-center gap-6">
+              <p className="text-4xl font-bold">Шпион был</p>
+              <p className="text-3xl font-bold text-[#D9293A]">
+                {cards
+                  .map((card, index) => (card.role === "spy" ? `Игрок ${index + 1}` : null))
+                  .filter(Boolean)
+                  .join(", ")}
+              </p>
+              <p className="text-xl text-white/75">
+                Тема: <span className="font-bold text-white">{selectedTopic}</span>
+              </p>
+            </div>
+
+            <div className="flex w-[256px] flex-col gap-3">
+              <button
+                onClick={resetGame}
+                className="h-[50px] w-full cursor-pointer rounded-[10px] border border-white bg-[#1E1E1E] text-lg font-bold transition duration-300 hover:border-black hover:bg-white hover:text-black"
+              >
+                Новая игра
+              </button>
+              <button
+                onClick={returnToMenu}
+                className="h-[50px] w-full cursor-pointer rounded-[10px] border border-white/50 bg-[#1E1E1E] text-lg transition duration-300 hover:border-black hover:bg-white hover:text-black"
+              >
+                Назад
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
