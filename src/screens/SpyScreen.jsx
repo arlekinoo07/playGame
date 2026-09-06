@@ -47,6 +47,7 @@ export default function SpyScreen({ onBack }) {
   const [cards, setCards] = useState([]);
   const [currentPlayer, setCurrentPlayer] = useState(0);
   const [cardOpened, setCardOpened] = useState(false);
+  const [cardClosing, setCardClosing] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState("");
 
   const showSettingsPreview = step >= 1;
@@ -86,18 +87,28 @@ export default function SpyScreen({ onBack }) {
     setCards(shuffledRoles);
     setCurrentPlayer(0);
     setCardOpened(false);
+    setCardClosing(false);
     setStep(3);
   }
 
   function closeCurrentCard() {
+    setCardClosing(true);
+    setCardOpened(false);
+  }
+
+  function finishClosingCard(event) {
+    if (event.target !== event.currentTarget || !cardClosing || cardOpened) {
+      return;
+    }
+
+    setCardClosing(false);
+
     if (currentPlayer === cards.length - 1) {
       setStep(1);
-      setCardOpened(false);
       return;
     }
 
     setCurrentPlayer((value) => value + 1);
-    setCardOpened(false);
   }
 
   return (
@@ -275,6 +286,10 @@ export default function SpyScreen({ onBack }) {
           <div className="flex items-center justify-center [perspective:1200px]">
             <button
               onClick={() => {
+                if (cardClosing) {
+                  return;
+                }
+
                 if (cardOpened) {
                   closeCurrentCard();
                   return;
@@ -286,6 +301,7 @@ export default function SpyScreen({ onBack }) {
               aria-label={cardOpened ? "Закрыть карточку и передать ход" : "Открыть карточку"}
             >
               <div
+                onTransitionEnd={finishClosingCard}
                 className={`relative h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] [transform-style:preserve-3d] ${
                   cardOpened ? "[transform:rotateY(180deg)]" : "[transform:rotateY(0deg)]"
                 }`}
