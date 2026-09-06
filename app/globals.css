@@ -9,3 +9,9 @@ body {
 body {
   background: rgb(23 23 23);
 }
+
+@media (max-width: 767px) {
+  .mobile-previous-panel {
+    display: none !important;
+  }
+}

@@ -6,6 +6,12 @@ export const metadata = {
   description: "Browser prototype of the Spy party game.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="ru">

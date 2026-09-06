@@ -150,7 +150,7 @@ export default function SpyScreen({ onBack }) {
             <div
               className={`h-auto min-h-[500px] w-full max-w-[471px] shrink-0 flex-col items-center justify-center gap-20 rounded-[10px] bg-[#222222] px-5 py-8 text-white transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:flex md:h-[558px] md:gap-[144px] md:px-0 md:py-0 ${
                 showSettingsPreview
-                  ? "hidden md:flex md:-translate-x-8 md:scale-[0.985] md:opacity-95"
+                  ? "mobile-previous-panel md:-translate-x-8 md:scale-[0.985] md:opacity-95"
                   : "flex translate-x-0 scale-100 opacity-100"
               }`}
             >
@@ -195,7 +195,7 @@ export default function SpyScreen({ onBack }) {
               className={`h-auto min-h-[500px] w-full max-w-[471px] shrink-0 flex-col items-center justify-center gap-[35px] rounded-[10px] bg-[#222222] px-5 py-8 text-white transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:flex md:h-[558px] md:px-0 md:py-0 ${
                 showSettingsPreview
                   ? showNamesPreview
-                    ? "hidden md:flex md:-translate-x-6 md:scale-[0.99] md:opacity-100"
+                    ? "mobile-previous-panel md:-translate-x-6 md:scale-[0.99] md:opacity-100"
                     : "flex translate-x-0 scale-100 opacity-100"
                   : "translate-x-40 scale-[0.94] opacity-0"
               }`}
