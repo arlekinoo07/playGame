@@ -272,7 +272,7 @@ export default function SpyScreen({ onBack }) {
             {cardOpened ? "Нажми ещё раз, чтобы передать ход дальше" : "Передайте устройство следующему игроку"}
           </p>
 
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center [perspective:1200px]">
             <button
               onClick={() => {
                 if (cardOpened) {
@@ -282,15 +282,15 @@ export default function SpyScreen({ onBack }) {
 
                 setCardOpened(true);
               }}
-              className={`relative flex h-[440px] w-[290px] cursor-pointer items-center justify-center overflow-hidden rounded-[16px] border-2 px-8 text-center text-3xl font-bold shadow-2xl transition-all duration-500 ${
-                cardOpened
-                  ? "border-[#9A0D1B] bg-white text-black"
-                  : "border-[#3A3A3A] text-white hover:border-[#4A4A4A]"
-              }`}
-              style={cardOpened ? undefined : { backgroundColor: "#1E1E1E" }}
+              className="relative h-[440px] w-[290px] cursor-pointer border-0 bg-transparent p-0 text-center shadow-2xl outline-none"
+              aria-label={cardOpened ? "Закрыть карточку и передать ход" : "Открыть карточку"}
             >
-              {!cardOpened && (
-                <div className="absolute inset-0 overflow-hidden rounded-[14px]">
+              <div
+                className={`relative h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] [transform-style:preserve-3d] ${
+                  cardOpened ? "[transform:rotateY(180deg)]" : "[transform:rotateY(0deg)]"
+                }`}
+              >
+                <div className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-[16px] border-2 border-[#3A3A3A] bg-[#1E1E1E] px-8 text-3xl font-bold text-white [backface-visibility:hidden] hover:border-[#4A4A4A]">
                   {CARD_PATTERN.map((item) => (
                     <img
                       key={item.id}
@@ -306,17 +306,15 @@ export default function SpyScreen({ onBack }) {
                       }}
                     />
                   ))}
-                </div>
-              )}
-              <span className="relative z-10">
-                {cardOpened ? (
-                  cards[currentPlayer].text
-                ) : (
-                  <span className="flex min-h-[148px] w-[190px] items-center justify-center rounded-[18px] border border-white/10 bg-black/25 px-6 text-center text-[34px] leading-[0.95] backdrop-blur-md">
+                  <span className="relative z-10 flex min-h-[148px] w-[190px] items-center justify-center rounded-[18px] border border-white/10 bg-black/25 px-6 text-[34px] leading-[0.95] backdrop-blur-md">
                     Открыть карточку
                   </span>
-                )}
-              </span>
+                </div>
+
+                <div className="absolute inset-0 flex items-center justify-center rounded-[16px] border-2 border-[#9A0D1B] bg-white px-8 text-3xl font-bold text-black [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  {cards[currentPlayer].text}
+                </div>
+              </div>
             </button>
           </div>
 
