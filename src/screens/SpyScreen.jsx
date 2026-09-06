@@ -326,11 +326,11 @@ export default function SpyScreen({ onBack }) {
             >
               <div
                 onTransitionEnd={finishClosingCard}
-                className={`relative h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] [transform-style:preserve-3d] ${
+                className={`card-flipper relative h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
                   cardOpened ? "[transform:rotateY(180deg)]" : "[transform:rotateY(0deg)]"
                 }`}
               >
-                <div className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-[16px] border-2 border-[#3A3A3A] bg-[#1E1E1E] px-8 text-3xl font-bold text-white [backface-visibility:hidden] hover:border-[#4A4A4A]">
+                <div className="card-face card-face-front absolute inset-0 flex items-center justify-center overflow-hidden rounded-[16px] border-2 border-[#3A3A3A] bg-[#1E1E1E] px-8 text-3xl font-bold text-white hover:border-[#4A4A4A]">
                   {CARD_PATTERN.map((item) => (
                     <img
                       key={item.id}
@@ -351,7 +351,7 @@ export default function SpyScreen({ onBack }) {
                   </span>
                 </div>
 
-                <div className="absolute inset-0 flex items-center justify-center rounded-[16px] border-2 border-[#9A0D1B] bg-white px-8 text-3xl font-bold text-black [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                <div className="card-face card-face-back absolute inset-0 flex items-center justify-center rounded-[16px] border-2 border-[#9A0D1B] bg-white px-8 text-3xl font-bold text-black">
                   {cards[currentPlayer].text}
                 </div>
               </div>

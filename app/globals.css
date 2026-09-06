@@ -10,6 +10,24 @@ body {
   background: rgb(23 23 23);
 }
 
+.card-flipper {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.card-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-face-front {
+  transform: rotateY(0deg) translateZ(1px);
+}
+
+.card-face-back {
+  transform: rotateY(180deg) translateZ(1px);
+}
+
 @media (max-width: 767px) {
   .mobile-previous-panel {
     display: none !important;
